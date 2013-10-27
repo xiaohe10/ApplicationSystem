@@ -1,0 +1,12 @@
+%p
+  %b Start date:
+  = @visit.start_date
+%p
+  %b End date:
+  = @visit.end_date
+%p
+  %b Type:
+  = @visit.visit_type
+
+= link_to t(:edit), edit_visit_path(@visit), class: 'btn btn-default'
+= link_to t(:back), visits_path, class: 'btn btn-default'

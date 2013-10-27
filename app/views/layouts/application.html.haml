@@ -1,0 +1,23 @@
+!!! 5
+%html
+  %head
+    %title Application System
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body
+    %header.navbar.navbar-fixed-top.navbar-inverse.bs-docs-nav
+      .container
+        .navbar-brand Application System
+        %ul.nav.navbar-nav
+          %li= link_to 'Log in', 'users/sign_in' if not user_signed_in?
+          %li= link_to current_user.email, :root if user_signed_in?
+          %li= link_to 'Log out', 'users/log_out' if user_signed_in?
+    .container
+      - if flash[:notice]
+        .alert.alert-success= flash[:notice]
+      - elsif flash[:warning]
+        .alert.alert-warning= flash[:warning]
+
+      = yield

@@ -1,0 +1,29 @@
+.page-header
+  %h1 Visits
+
+%table.table.table-striped.table-bordered
+  %tr
+    %th= t 'activerecord.attributes.visit.start_date'
+    %th= t 'activerecord.attributes.visit.end_date'
+    %th= t 'activerecord.attributes.visit.visit_type'
+    %th
+
+  - @visits.each do |visit|
+    %tr
+      %td= visit.start_date
+      %td= visit.end_date
+      %td= visit.visit_type
+      %td
+        = link_to t(:show), visit, class: 'btn btn-mini btn-default'
+        = link_to t(:edit), edit_visit_path(visit),
+          class: 'btn btn-mini btn-default'
+        = link_to t(:destroy), visit,
+          :confirm => t(:are_you_sure, default: "Are you sure?"), :method => :delete,
+          class: 'btn btn-mini btn-danger'
+
+%br
+
+= link_to new_visit_path, class: 'btn btn-success' do
+  %i.icon-plus.icon-white
+  = t(:new_visit)
+
