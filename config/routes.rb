@@ -1,4 +1,7 @@
 ApplicationSystem::Application.routes.draw do
+  resources :visitor_invitations
+
+
   root :to => 'visits#index'
 
   resources :visits
